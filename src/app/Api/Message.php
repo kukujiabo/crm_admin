@@ -62,6 +62,12 @@ class Message extends BaseApi {
 
 			],
 
+      'remove' => [
+      
+        'id' => 'id|int|true||模版id'
+      
+      ],
+
 			'getAll' => [
 
 
@@ -143,5 +149,17 @@ class Message extends BaseApi {
 		return $this->dm->getAll($this->retriveRuleParams(__FUNCTION__));
 
 	}
+
+  /**
+   * 删除模版
+   * @desc 删除模版
+   *
+   * @return int id
+   */
+  public function remove() {
+  
+    return $this->dm->remove($this->retriveRuleParams(__FUNCTION__));
+  
+  }
 
 }

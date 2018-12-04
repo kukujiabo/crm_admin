@@ -39,4 +39,10 @@ class MessageDm {
 
 	}
 
+  public function remove($data) {
+  
+    return \App\request('App.Message.Remove', $data);
+  
+  }
+
 }
