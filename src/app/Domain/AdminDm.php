@@ -10,6 +10,18 @@ use App\Library\RedisClient;
  */
 class AdminDm extends BaseDm {
 
+  protected $_admin;
+
+  public function __construct() {
+  
+    $requestHeader = getallheaders();
+  
+    $auth = RedisClient::get('admin_auth', $requestHeader['AX-TOKEN']);
+
+    $this->_admin = $auth;
+
+  }
+
   /**
    * 管理员登录
    */
@@ -45,5 +57,18 @@ class AdminDm extends BaseDm {
     return \App\request('App.Admin.ListQuery', $params);
 
   }
+
+  public function getDetail($params) {
+
+    return \App\request('App.Admin.GetDetail', $params);
+
+  }
+
+  public function editAcct($params) {
+
+    return \App\request('App.Admin.EditAcct', $params);
+
+  }
+
 
 }

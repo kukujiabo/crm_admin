@@ -46,6 +46,26 @@ class Admin extends BaseApi {
 
       ],
 
+      'getDetail' => [
+
+        'id' => 'id|int|true||管理员id'
+
+      ],
+
+      'editAcct' => [
+
+        'id' => 'id|int|true||管理员id',
+
+        'account' => 'account|string|false||管理员账号',
+
+        'admin_name' => 'admin_name|string|false||管理员名称',
+
+        'password' => 'password|string|false||密码',
+        
+        'role' => 'role|int|false||角色'
+
+      ],
+
       'sessionAdminInfo' => [
       
 
@@ -103,5 +123,28 @@ class Admin extends BaseApi {
 
   }
 
+  /**
+   * 查询管理员详情
+   * @desc 查询管理员详情
+   *
+   * @return array data
+   */
+  public function getDetail() {
+
+    return $this->dm->getDetail($this->retriveRuleParams(__FUNCTION__));
+
+  }
+
+  /**
+   * 编辑账号
+   * @desc 编辑账号
+   *
+   * @return int num
+   */
+  public function editAcct() {
+
+    return $this->dm->editAcct($this->retriveRuleParams(__FUNCTION__));
+
+  }
 
 }
