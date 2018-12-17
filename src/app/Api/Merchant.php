@@ -26,6 +26,8 @@ class Merchant extends BaseApi {
       'listQuery' => array(
       
         'keywords' => 'keywords|string|false||关键字',
+        'start_date' => 'start_date|string|false||开始时间',
+        'end_date' => 'end_date|string|false||结束时间',
         'fields' => 'fields|string|false||字段',
         'order' => 'order|string|false||排序',
         'page' => 'page|int|false|1|页码',
