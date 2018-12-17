@@ -57,6 +57,12 @@ class Merchant extends BaseApi {
       'getAll' => array(
 
 
+      ),
+
+      'remove' => array(
+      
+        'id' => 'id|int|true||客户id'
+      
       )
     
     ));
@@ -121,6 +127,18 @@ class Merchant extends BaseApi {
 
     return $this->dm->getAll($this->retriveRuleParams(__FUNCTION__));
 
+  }
+
+  /**
+   * 删除客户
+   * @desc 删除客户
+   *
+   * @return int num
+   */
+  public function remove() {
+  
+    return $this->dm->remove($this->retriveRuleParams(__FUNCTION__)); 
+  
   }
 
 }

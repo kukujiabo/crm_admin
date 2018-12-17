@@ -33,4 +33,10 @@ class MerchantDm {
   
   }
 
+  public function remove($data) {
+  
+    return \App\request('App.Merchant.Remove', $data);
+  
+  }
+
 }
