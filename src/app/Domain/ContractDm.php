@@ -15,5 +15,22 @@ class ContractDm {
 
 	}
 
+  public function getDetail($data) {
+  
+		return \App\request('App.Contract.GetDetail', $data);
+  
+  }
+
+  public function remove($data) {
+  
+    return \App\remove('App.Contract.Remove', $data);
+  
+  }
+
+  public function edit($data) {
+  
+    return \App\edit('App.Contract.Edit', $data);
+  
+  }
 
 }
