@@ -23,7 +23,7 @@ class ContractDm {
 
   public function remove($data) {
   
-    return \App\remove('App.Contract.Remove', $data);
+    return \App\request('App.Contract.Remove', $data);
   
   }
 
