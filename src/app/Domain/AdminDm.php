@@ -70,5 +70,12 @@ class AdminDm extends BaseDm {
 
   }
 
+  public function updatePassword($params) {
+
+    $params['id'] = $this->_admin->id;
+
+    return \App\request('App.Admin.UpdatePassword', $params);
+
+  }
 
 }

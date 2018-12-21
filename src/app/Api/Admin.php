@@ -69,7 +69,16 @@ class Admin extends BaseApi {
       'sessionAdminInfo' => [
       
 
+      ],
+
+      'updatePassword' => [
+
+        'password' => 'password|string|true||新密码',
+
+        'old_password' => 'old_password|string|true||旧密码'
+
       ]
+    
     
     ]);
   
@@ -144,6 +153,18 @@ class Admin extends BaseApi {
   public function editAcct() {
 
     return $this->dm->editAcct($this->retriveRuleParams(__FUNCTION__));
+
+  }
+
+  /**
+   * 修改账号密码
+   * @desc 修改账号密码
+   *
+   * @return int num
+   */
+  public function updatePassword() {
+
+    return $this->dm->updatePassword($this->retriveRuleParams(__FUNCTION__));
 
   }
 
