@@ -63,6 +63,17 @@ class Merchant extends BaseApi {
       
         'id' => 'id|int|true||客户id'
       
+      ),
+
+      'download' => array(
+
+        'keywords' => 'keywords|string|false||关键字',
+        'status' => 'status|int|false||状态',
+        'cType' => 'cType|int|false||类型',
+        'start_date' => 'start_date|string|false||开始时间',
+        'end_date' => 'end_date|string|false||结束时间',
+        'fields' => 'fields|string|false||字段'
+
       )
     
     ));

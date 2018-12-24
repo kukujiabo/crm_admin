@@ -26,6 +26,12 @@ class Credit extends BaseApi {
 				'fields' => 'fields|string|false||字段',
 				'order' => 'order|string|false||',
 
+			],
+
+			'remove' => [
+
+				'id' => 'id|int|true||额度id'
+
 			]
 
 		]);
@@ -53,6 +59,18 @@ class Credit extends BaseApi {
 	public function listQuery() {
 
 		return $this->dm->listQuery($this->retriveRuleParams(__FUNCTION__));
+
+	}
+
+	/**
+	 * 删除额度
+	 * @desc 删除额度
+	 *
+	 * @return int num
+	 */
+	public function remove() {
+
+		return $this->dm->remove($this->retriveRuleParams(__FUNCTION__));
 
 	}
 

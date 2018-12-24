@@ -15,4 +15,10 @@ class CreditDm {
 
 	}
 
+	public function remove($data) {
+
+		return \App\request('App.Credit.Remove', $data);
+
+	}
+
 }

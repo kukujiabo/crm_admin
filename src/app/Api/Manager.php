@@ -48,7 +48,7 @@ class Manager extends BaseApi {
     
       'getList' => [
       
-        'pid' => 'pid|int|false||客户id',
+        'maid' => 'maid|int|false||客户id',
 
         'name' => 'name|string|false||员工名称',
 
