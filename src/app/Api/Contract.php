@@ -23,6 +23,16 @@ class Contract extends BaseApi {
 
 				'brief'  => 'brief|string|false||说明',
 
+				'money' => 'money|string|false||合同金额',
+
+				'sign_date' => 'sign_date|string|false||签约金额',
+
+				'expire_date' => 'expire_date|string|false||结束日期',
+
+				'sales_id' => 'sales_id|int|false||销售员id',
+
+				'chance_id' => 'chance_id|int|false||销售机会id'
+
 			],
 
       'edit' => [
@@ -71,6 +81,20 @@ class Contract extends BaseApi {
 
 				'page_size' => 'page_size|int|false||每页条数'
 
+			],
+
+			'download' => [
+
+				'keywords' => 'keywords|string|false||关键字',
+
+				'type' => 'type|string|false||分类',
+
+				'fields' => 'fields|string|false||字段',
+
+				'start_date' => 'start_date|string|false||开始时间',
+
+				'end_date' => 'end_date|string|false||结束时间'
+				
 			]
 
 		]);
@@ -136,6 +160,18 @@ class Contract extends BaseApi {
   
     return $this->dm->edit($this->retriveRuleParams(__FUNCTION__)); 
   
+  }
+
+  /**
+   * 下载合同数据
+   * @desc 下载合同数据
+   *
+   * @return stream file
+   */
+  public function download() {
+
+  	return $this->dm->download($this->retriveRuleParams(__FUNCTION__));
+
   }
 
 }

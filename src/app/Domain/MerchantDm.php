@@ -1,6 +1,9 @@
 <?php
 namespace App\Domain;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class MerchantDm {
 
   public function create($data) {
@@ -39,13 +42,19 @@ class MerchantDm {
   
   }
 
+  public function batchSetSales($data) {
+
+    return \App\request('App.Merchant.BatchSetSales', $data);
+
+  }
+
   public function download($data) {
 
     $result = \App\request('App.Merchant.GetAll', $data);
 
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Type:application/vnd.ms-excel');
-    header('Content-Disposition: attachment;filename="订单数据.xlsx"');
+    header('Content-Disposition: attachment;filename="客户数据' . time() . '.xlsx"');
     header('Cache-Control: max-age=0');
       
     $spreadsheet = new Spreadsheet();
@@ -53,11 +62,11 @@ class MerchantDm {
     $titles = array(
     
       'id' => 'ID', 
-      'mcode' => '客户编号', 
+      'mcode' => '客户编号',
       'mname' => '客户名称', 
       'ext_1' => '联系人姓名', 
       'phone' => '联系人手机号', 
-      'type' => '客户类型', 
+      'type' => '客户类型',
       'real_name' => '业务员', 
       'sales_phone' => '业务员手机', 
       'created_at' => '加入时间'
@@ -83,7 +92,7 @@ class MerchantDm {
 
     $row = 2;
 
-    foreach($result['PO_POMain'] as $index => $order) {
+    foreach($result as $index => $order) {
 
       $column = 0;
 
@@ -91,7 +100,17 @@ class MerchantDm {
 
       foreach($fields as $field) {
 
-        $valueOrder[$field] = $order[$field];
+        if ($field == 'type') {
+
+          $match = [ '', '新客户', '小b客户', '大b客户', 'kv客户' ];
+
+          $valueOrder[$field] = $match[$order[$field]];
+
+        } else {
+
+          $valueOrder[$field] = $order[$field];
+
+        }
 
       }
 
