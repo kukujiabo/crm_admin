@@ -35,7 +35,9 @@ class Reward extends BaseApi {
 
       'listQuery' => [
 
-        'keywords' => 'keywords|string|false||项目名称',
+        'mid' => 'mid|string|false||客户id',
+        'status' => 'status|int|false||状态',
+        'reward_name' => 'reward_name|string|false||项目名称',
         'fields' => 'fields|string|false||查询字段',
         'order' => 'order|string|false||排序',
         'page' => 'page|int|false||页码',
@@ -52,8 +54,23 @@ class Reward extends BaseApi {
       'changeStep' => [
       
         'id' => 'id|int|true||项目id',
+        
         'status' => 'status|int|true||项目id'
       
+      ],
+
+      'download' => [
+
+        'keywords' => 'keywords|string|false||关键字',
+
+        'type' => 'type|string|false||分类',
+
+        'fields' => 'fields|string|false||字段',
+
+        'start_date' => 'start_date|string|false||开始时间',
+
+        'end_date' => 'end_date|string|false||结束时间'
+
       ]
     
     ]);
@@ -118,6 +135,18 @@ class Reward extends BaseApi {
   
     return $this->dm->changeStep($this->retriveRuleParams(__FUNCTION__));
   
+  }
+
+  /**
+   * 下载项目列表
+   * @desc 下载项目列表
+   *
+   * @return array list
+   */
+  public function download() {
+
+    return $this->dm->download($this->retriveRuleParams(__FUNCTION__));
+
   }
 
 }

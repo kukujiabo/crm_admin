@@ -16,6 +16,7 @@ class SalesChance extends BaseApi {
 				'price' => 'price|float|true||预估价格',
 				'customer_name' => 'customer_name|string|true||客户名称',
 				'customer_id' => 'customer_id|int|true||客户id',
+				'contact_type' => 'contact_type|int|true||联系类型',
 				'deal_date' => 'deal_date|string|true||预计成交时间',
 				'type' => 'type|int|true||类型',
 				'next_step' => 'next_step|string|true||下一步',
@@ -56,12 +57,19 @@ class SalesChance extends BaseApi {
 				'type' => 'type|int|false||类型',
 				'next_step' => 'next_step|string|false||下一步',
 				'source' => 'source|int|false||来源',
+				'contact_type' => 'contact_type|int|false||联系方式',
 				'stage' => 'stage|int|false||阶段',
 				'sales_id' => 'sales_id|int|false||销售id',
 				'posibility' => 'posibility|int|false||可能性',
 				'description' => 'description|string|false||描述',
 				'sales_name' => 'sales_name|string|false|1|销售名称',
 				'state' => 'state|int|false|20|状态'
+
+			],
+
+			'getDetail' => [
+
+				'id' => 'id|int|true||查询详情'
 
 			],
 
@@ -143,6 +151,18 @@ class SalesChance extends BaseApi {
 	public function getAll() {
 
 		return $this->dm->getAll($this->retriveRuleParams(__FUNCTION__));
+
+	}
+
+	/**
+	 * 查询详情
+	 * @desc 查询详情
+	 *
+	 * @return array data
+	 */
+	public function getDetail() {
+
+		return $this->dm->getDetail($this->retriveRuleParams(__FUNCTION__));
 
 	}
 

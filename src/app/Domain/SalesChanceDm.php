@@ -24,6 +24,12 @@ class SalesChanceDm {
 
 	}
 
+  public function getDetail($data) {
+
+    return \App\request('App.SalesChance.GetDetail', $data);
+
+  }
+
 	public function getAll($data) {
 
 		return \App\request('App.SalesChance.GetAll', $data);

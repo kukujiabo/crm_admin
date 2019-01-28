@@ -38,7 +38,7 @@ class ContractDm {
 
   public function download($data) {
 
-  	$result = \App\request('App.Track.GetAll', $data);
+  	$result = \App\request('App.Contract.GetAll', $data);
 
    	header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Type:application/vnd.ms-excel');
@@ -71,7 +71,7 @@ class ContractDm {
 
     foreach($fields as $key => $field) {
 
-	    foreach($titles as  $title) {
+	    foreach($titles as $title) {
 
 	      $sheet->setCellValue("{$characters[$key]}1", $titles[$field]);
 	    
@@ -91,7 +91,7 @@ class ContractDm {
 
       foreach($fields as $field) {
 
-      	if ($fields == 'type') {
+      	if ($field == 'type') {
 
       		$match = array( '', '', '小b客户', '大b客户', 'kv客户');
 

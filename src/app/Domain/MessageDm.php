@@ -9,6 +9,12 @@ class MessageDm {
 
 	}
 
+	public function editTmp($data) {
+
+		return \App\request('App.Message.EditTmp', $data);
+
+	}
+
 	public function tmpList($data) {
 
 		return \App\request('App.Message.TmpList', $data);
@@ -43,6 +49,12 @@ class MessageDm {
   
     return \App\request('App.Message.Remove', $data);
   
+  }
+
+  public function getTmpDetail($data) {
+
+  	return \App\request('App.Message.GetTmpDetail', $data);
+
   }
 
 }
